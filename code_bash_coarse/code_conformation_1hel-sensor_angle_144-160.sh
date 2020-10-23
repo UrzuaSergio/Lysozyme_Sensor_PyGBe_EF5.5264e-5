@@ -2,9 +2,9 @@
 
 #SBATCH -p gpuk
 #SBATCH --gres=gpu:1
-#SBATCH -J 1hel-sensor_144-160_EF1e-12
-#SBATCH -o 1hel-sensor_144-160_EF1e-12-%j.out
-#SBATCH -e 1hel-sensor_144-160_EF1e-12-%j.err
+#SBATCH -J 1hel-sensor_144-160_EF5.5264e-5
+#SBATCH -o 1hel-sensor_144-160_EF5.5264e-5-%j.out
+#SBATCH -e 1hel-sensor_144-160_EF5.5264e-5-%j.err
 #SBATCH --mem=2G
 #SBATCH --time=55:00:00
 #SBATCH --mail-user=sergio.urzua.13@sansano.usm.cl
@@ -15,7 +15,7 @@ use anaconda3
 
 export PYTHONPATH=/user/s/surzua/PyCuda/pycuda/lib/python
 
-cd ../../Lysozyme_Sensor_PyGBe_EF1e-12/
+cd ../../Lysozyme_Sensor_PyGBe_EF5.5264e-5/
 ###############################################################################################################################################################
 echo "Simulación que contempla las siguientes Orientaciones:"
 echo "Tilt begin: 144° - Tilt_end: 160° - Ntilt: 5 -- Rot begin: 0° - Rot end: 360° - Nrot: 36"
@@ -28,7 +28,7 @@ echo "Se ha Creado Config File Auxiliar"
 echo "Comenzo Ejecucion de PyGBe para Caso Proteina-Superficie Interactuando"
 echo "%%%%%%%% Simulando %%%%%%%%"
 
-python conformation_1hel.py 1hel_sensor 1hel_sensor/1hel 1hel_sensor/mesh/1hel_d16_split 144 160 5 2 1hel-sensor_144-160-2_EF1e-12
+python conformation_1hel.py 1hel_sensor 1hel_sensor/1hel 1hel_sensor/mesh/1hel_d16_split 144 160 5 2 1hel-sensor_144-160-2_EF5.5264e-5
 
 echo "Termino Ejecucion de PyGBe para Caso Proteina-Superficie Interactuando"
 ##############################################################################################################################################################
