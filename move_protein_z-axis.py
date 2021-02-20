@@ -187,7 +187,7 @@ atom_vec_norm = sqrt(sum(atom_vec*atom_vec))
 anglex = arccos(dot(atom_vec, normal2)/atom_vec_norm)
 
 
-if alpha_x>pi:
+if alpha_z>pi:
     anglex = 2*pi-anglex    # Dot product finds the smallest angle!
 
 if verbose:
