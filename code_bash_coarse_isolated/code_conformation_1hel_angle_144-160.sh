@@ -2,11 +2,11 @@
 
 #SBATCH -p gpuk
 #SBATCH --gres=gpu:1
-#SBATCH -J 1hel-sensor_38-54_EF1e-12
-#SBATCH -o 1hel-sensor_38-54_EF1e-12-%j.out
-#SBATCH -e 1hel-sensor_38-54_EF1e-12-%j.err
+#SBATCH -J 1hel_144-160_EF-5.5264e-4
+#SBATCH -o 1hel_144-160_EF-5.5264e-4-%j.out
+#SBATCH -e 1hel_144-160_EF-5.5264e-4-%j.err
 #SBATCH --mem=2G
-#SBATCH --time=35:00:00
+#SBATCH --time=55:00:00
 #SBATCH --mail-user=sergio.urzua.13@sansano.usm.cl
 #SBATCH --mail-type=BEGIN,END,FAIL
 
@@ -15,20 +15,20 @@ use anaconda3
 
 export PYTHONPATH=/user/s/surzua/PyCuda/pycuda/lib/python
 
-cd ../../Lysozyme_Sensor_PyGBe/
+cd ../../Lysozyme_Sensor_PyGBe_EF-5.5264e-4/
 ###############################################################################################################################################################
 echo "Simulación que contempla las siguientes Orientaciones:"
-echo "Tilt begin: 38° - Tilt_end: 54° - Ntilt: 9 -- Rot begin: 0° - Rot end: 360° - Nrot: 36"
+echo "Tilt begin: 144° - Tilt_end: 160° - Ntilt: 5 -- Rot begin: 0° - Rot end: 360° - Nrot: 36"
 echo "...................................................................................."
-echo "Proteina-Superficie: Lisozima - Surf Cargada -0.04 C/m^2."
+echo "Proteina: Lisozima."
 echo "Separación: 0.2 nm"
-python generador_config_file.py 1hel_sensor 1hel mesh/1hel_d16_split 38 54 2
+python generador_config_file.py 1hel_isolated 1hel mesh/1hel_d16_split 144 160 2
 
 echo "Se ha Creado Config File Auxiliar"
 echo "Comenzo Ejecucion de PyGBe para Caso Proteina-Superficie Interactuando"
 echo "%%%%%%%% Simulando %%%%%%%%"
 
-python conformation_1hel.py 1hel_sensor 1hel_sensor/1hel 1hel_sensor/mesh/1hel_d16_split 38 54 9 2 1hel-sensor_38-54-2_EF1e-12
+python conformation_1hel.py 1hel_isolated 1hel_isolated/1hel 1hel_isolated/mesh/1hel_d16_split 144 160 5 2 1hel-isolated_144-160-2_EF-5.5264e-4
 
 echo "Termino Ejecucion de PyGBe para Caso Proteina-Superficie Interactuando"
 ##############################################################################################################################################################
